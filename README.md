@@ -18,14 +18,14 @@ Since this is an internal/open-source package hosted on GitHub, you can install 
 
 **Public Repository:**
 ```bash
-bun add github:farioso/2bucket-client
+bun add github:fariosofernando/2bucket-client
 
 ```
 
 **Private Repository (via SSH):**
 
 ```bash
-bun add git+ssh://git@github.com/farioso/2bucket-client.git
+bun add git+ssh://git@github.com/fariosofernando/2bucket-client.git
 
 ```
 
