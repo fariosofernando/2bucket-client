@@ -40,6 +40,8 @@ export class TwoBucketClient {
 		if (is_online) {
 			try {
 				await this.send_to_server(data);
+
+				await this.cleanup_original_file(data.file_path);
 				return;
 			} catch (error) {
 				console.warn(
@@ -50,6 +52,7 @@ export class TwoBucketClient {
 		}
 
 		await this.enqueue_upload(data);
+		await this.cleanup_original_file(data.file_path);
 	}
 
 	private async send_to_server(data: UploadData): Promise<void> {
@@ -136,6 +139,19 @@ export class TwoBucketClient {
 			return res.status === 200;
 		} catch {
 			return false;
+		}
+	}
+
+	private async cleanup_original_file(file_path: string): Promise<void> {
+		try {
+			if (existsSync(file_path)) {
+				await fs.unlink(file_path);
+			}
+		} catch (err) {
+			console.error(
+				`[2Bucket-Client] Erro ao limpar arquivo temporário: ${file_path}`,
+				err,
+			);
 		}
 	}
 }
