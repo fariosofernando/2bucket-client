@@ -29,6 +29,12 @@ bun add git+ssh://git@github.com/fariosofernando/2bucket-client.git
 
 ```
 
+or
+
+```bash
+bun add github:fariosofernando/2bucket-client
+```
+
 ---
 
 ## Usage Example
